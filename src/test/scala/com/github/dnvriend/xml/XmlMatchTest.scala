@@ -49,4 +49,8 @@ class XmlMatchTest extends TestSpec {
     determineOrder(BeerOrderXml) shouldBe BeerOrder(10)
     determineOrder(SausageOrderXml) shouldBe SausageOrder(20)
   }
+
+  it should "get the name of the root node" in {
+    BeerOrderXml.head.label shouldBe "order"
+  }
 }
