@@ -21,14 +21,14 @@ case class Person(id: String, name: String, age: Int)
 
 object Person {
   implicit val xmlFormat: XmlFormat[Person] = new XmlFormat[Person] {
-    override def toXml(person: Person): NodeSeq = {
+    override def marshal(person: Person): NodeSeq = {
       <person id={ person.id }>
         <name>{ person.name }</name>
         <age>{ person.age }</age>
       </person>
     }
 
-    override def fromXml(xml: NodeSeq): Person = {
+    override def unmarshal(xml: NodeSeq): Person = {
       val id: String = xml \@ "id"
       val name: String = (xml \ "name").text
       val age: Int = (xml \ "age").text.toInt

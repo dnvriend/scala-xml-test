@@ -25,7 +25,7 @@ class PrettyPrinterTest extends TestSpec {
     block(new scala.xml.PrettyPrinter(80, 4))
 
   it should "format xml" in withPrettyPrinter { printer =>
-    val xml = XmlFormat[Person].toXml(Person("1", "foo", 42))
+    val xml = XmlFormat[Person].marshal(Person("1", "foo", 42))
     val str = printer.formatNodes(xml)
     str shouldBe
       """<person id="1">

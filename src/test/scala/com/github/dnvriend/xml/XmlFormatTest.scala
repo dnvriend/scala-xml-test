@@ -22,7 +22,11 @@ import scala.xml.NodeSeq
 
 class XmlFormatTest extends TestSpec {
   it should "Marshal and unmarshal using a format" in {
-    val xml: NodeSeq = XmlFormat[Person].toXml(Person("1", "foo", 42))
-    XmlFormat[Person].fromXml(xml) shouldBe Person("1", "foo", 42)
+    val xml: NodeSeq = XmlFormat[Person].marshal(Person("1", "foo", 42))
+    XmlFormat[Person].unmarshal(xml) shouldBe Person("1", "foo", 42)
+  }
+
+  it should "format to nodeSeq" in {
+    XmlFormat[Person].marshal(Person("1", "foo", 42)) shouldBe a[NodeSeq]
   }
 }

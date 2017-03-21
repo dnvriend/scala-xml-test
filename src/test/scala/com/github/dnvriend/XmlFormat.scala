@@ -22,7 +22,12 @@ object XmlFormat {
   def apply[A](implicit instance: XmlFormat[A]): XmlFormat[A] = instance
 }
 
-trait XmlFormat[A] {
-  def toXml(value: A): NodeSeq
-  def fromXml(xml: NodeSeq): A
+trait XmlFormat[A] extends XmlMarshaller[A] with XmlUnmarshaller[A]
+
+trait XmlMarshaller[A] {
+  def marshal(value: A): NodeSeq
+}
+
+trait XmlUnmarshaller[A] {
+  def unmarshal(xml: NodeSeq): A
 }

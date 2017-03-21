@@ -13,6 +13,12 @@ libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.0-M2"
 libraryDependencies += "com.softwaremill.macwire" %% "macros" % "2.3.0" % "provided"
 libraryDependencies += "org.typelevel" %% "scalaz-scalatest" % "1.1.1" % Test
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1"
+//libraryDependencies ~= { xs =>
+//  xs.foreach(moduleId => println(s"1: ${moduleId.organization} => ${moduleId.name}"))
+//  println("filtering...")
+//  xs.filterNot(_.organization == "com.typesafe.play")
+//
+//}
 
 // testing configuration
 fork in Test := true
